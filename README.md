@@ -1,4 +1,6 @@
-# React Starter Kit
+# Number Guesser in ReactJS
+
+### Rewriting a Mod 1 project using ReactJS and react-start-kit from Turing.
 
 To install the dependencies:
 
