@@ -28816,21 +28816,19 @@
 	    var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
 
 	    _this.state = {
-	      guess: '',
-	      randNum: Math.floor(Math.random() * 100)
-
+	      guess: ''
 	    };
 	    return _this;
 	  }
 
+	  //
+	  // numberRandom() {
+	  //   // const { number } = this.state;
+	  //   this.state.randNum = Math.floor(Math.random()*100);
+	  //   console.log(this.state.randNum);
+	  // }
+
 	  _createClass(Application, [{
-	    key: 'numberRandom',
-	    value: function numberRandom() {
-	      // const { number } = this.state;
-	      this.state.randNum = Math.floor(Math.random() * 100);
-	      console.log(this.state.randNum);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var guess = this.state.guess;
@@ -29500,7 +29498,7 @@
 	var MakeGuess = function (_React$Component) {
 	  _inherits(MakeGuess, _React$Component);
 
-	  function MakeGuess() {
+	  function MakeGuess(props) {
 	    _classCallCheck(this, MakeGuess);
 
 	    var _this = _possibleConstructorReturn(this, (MakeGuess.__proto__ || Object.getPrototypeOf(MakeGuess)).call(this));
@@ -29578,8 +29576,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// const $ = require('jquery');
-
 	var HintMessage = function (_Component) {
 	  _inherits(HintMessage, _Component);
 
@@ -29599,7 +29595,6 @@
 	  _createClass(HintMessage, [{
 	    key: 'numberRandom',
 	    value: function numberRandom() {
-	      // const { number } = this.state;
 	      this.state.randNum = Math.floor(Math.random() * 100);
 	      console.log(this.state.randNum);
 	    }
