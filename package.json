@@ -1,11 +1,11 @@
 {
   "name": "number-guesser-react",
   "version": "1.0.0",
-  "description": "Rewriting a Mod 1 project using ReactJS and react-start-kit from Turing.",
+  "description": "Rewriting a Mod 1 project using ReactJS and react-starter-kit from Turing.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack.js",
+    "build": "webpack",
     "test": "mocha --compilers js:babel/register"
   },
   "repository": {
@@ -15,7 +15,7 @@
   "author": "MaryJane Valade",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/turingschool-examples/react-starter-kit/issues"
+    "url": "https://github.com/mjvalade/number-guesser-react/issues"
   },
   "homepage": "https://github.com/mjvalade/number-guesser-react",
   "devDependencies": {

@@ -1,6 +1,6 @@
 # Number Guesser in ReactJS
 
-### Rewriting a Mod 1 project using ReactJS and react-start-kit from Turing.
+### Rewriting a Mod 1 project using ReactJS and react-starter-kit from Turing.
 
 To install the dependencies:
 
