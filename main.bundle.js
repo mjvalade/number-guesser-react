@@ -28795,17 +28795,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _HintMessage = __webpack_require__(470);
-	
-	var _HintMessage2 = _interopRequireDefault(_HintMessage);
-	
-	var _MakeGuess = __webpack_require__(471);
+	var _MakeGuess = __webpack_require__(470);
 	
 	var _MakeGuess2 = _interopRequireDefault(_MakeGuess);
 	
-	var _ResetButton = __webpack_require__(472);
+	var _Buttons = __webpack_require__(472);
 	
-	var _ResetButton2 = _interopRequireDefault(_ResetButton);
+	var _Buttons2 = _interopRequireDefault(_Buttons);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -28851,13 +28847,11 @@
 	      console.log(this.state.randNum);
 	    }
 	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var guess = this.state.guess;
+	      var _this2 = this;
 	
+	      // const { guess } = this.state;
 	
 	      return _react2.default.createElement(
 	        'section',
@@ -28867,28 +28861,22 @@
 	          { className: 'Title' },
 	          'Number Guesser React-style'
 	        ),
-	        _react2.default.createElement(
-	          'h1',
-	          { className: 'userGuess' },
-	          'Your guess: ',
-	          this.state.guess
-	        ),
-	        _react2.default.createElement(_HintMessage2.default, { guess: this.state.guess }),
 	        _react2.default.createElement(_MakeGuess2.default, { guess: this.state.guess, setGuess: this.handleGuessChange.bind(this) }),
-	        _react2.default.createElement(_ResetButton2.default, { onResetGame: this.handleResetGame.bind(this) })
+	        _react2.default.createElement('input', {
+	          type: 'number',
+	          placeholder: 'Guess a number'
+	          // value={this.state.guess}
+	          , onChange: function onChange(e) {
+	            return _this2.setState({ currentGuess: e.target.value });
+	          }
+	        }),
+	        _react2.default.createElement(_Buttons2.default, null)
 	      );
 	    }
 	  }]);
 	
 	  return Application;
 	}(_react.Component);
-	
-	//
-	//     Application (state: guess) -> props
-	//                       : randNum
-	// HintMessage MakeGuess --> this.props.guess (R)
-	//     current guess
-	
 	
 	exports.default = Application;
 
@@ -29507,119 +29495,42 @@
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(464);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Message = __webpack_require__(471);
+	
+	var _Message2 = _interopRequireDefault(_Message);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var MakeGuess = function MakeGuess(props) {
+	  var guess = props.guess;
+	  var randNum = props.randNum;
+	  // const message = hintMessage(guess, randNum);
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	  // console.log('currentGuess', this.state.currentGuess);
+	  console.log('guess', guess);
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'h1',
+	      { className: 'userGuess' },
+	      'Your guess: ',
+	      guess
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      (0, _Message2.default)(guess, randNum)
+	    )
+	  );
+	};
 	
-	var HintMessage = function (_Component) {
-	  _inherits(HintMessage, _Component);
-	
-	  function HintMessage(props) {
-	    _classCallCheck(this, HintMessage);
-	
-	    return _possibleConstructorReturn(this, (HintMessage.__proto__ || Object.getPrototypeOf(HintMessage)).call(this));
-	  }
-	
-	  _createClass(HintMessage, [{
-	    key: 'numberRandom',
-	    value: function numberRandom() {
-	      this.state.randNum = Math.floor(Math.random() * 100);
-	      console.log(this.state.randNum);
-	    }
-	  }, {
-	    key: 'compareGuess',
-	    value: function compareGuess() {
-	      if (this.state.guess > this.props.randNum) {
-	        console.log('too high');
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'TooHigh' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'Your guess is too high.'
-	          )
-	        );
-	      }
-	      if (this.state.guess < this.props.randNum) {
-	        console.log('too low');
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'TooLow' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'Your guess is too low.'
-	          )
-	        );
-	      }
-	      if (this.state.guess === this.props.randNum) {
-	        console.log('winner');
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'Winner' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'You win!'
-	          )
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      // render submit button here
-	      return (
-	        // if (this.state.guess > this.props.randNum) {
-	        //   console.log('too high');
-	        //   return (
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'TooHigh' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'Your guess is too high. (test)'
-	          )
-	        )
-	      );
-	      // }
-	      // if (this.state.guess < this.props.randNum) {
-	      //   console.log('too low');
-	      //   return (
-	      //     <div className="TooLow">
-	      //       <p>Your guess is too low.</p>
-	      //     </div>
-	      //   );
-	      // }
-	      // if (this.state.guess = this.props.randNum) {
-	      //   console.log('winner');
-	      //   return (
-	      //     <div className="Winner">
-	      //       <p>You win!</p>
-	      //     </div>
-	      //   );
-	      // }
-	      // )
-	    }
-	  }]);
-	
-	  return HintMessage;
-	}(_react.Component);
-	
-	exports.default = HintMessage;
+	exports.default = MakeGuess;
 
 /***/ },
 /* 471 */
@@ -29627,80 +29538,31 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var _react = __webpack_require__(464);
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react2 = _interopRequireDefault(_react);
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(464);
-	
-	var MakeGuess = function (_React$Component) {
-	  _inherits(MakeGuess, _React$Component);
-	
-	  function MakeGuess() {
-	    _classCallCheck(this, MakeGuess);
-	
-	    var _this = _possibleConstructorReturn(this, (MakeGuess.__proto__ || Object.getPrototypeOf(MakeGuess)).call(this));
-	
-	    _this.state = {
-	      currentGuess: ''
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(MakeGuess, [{
-	    key: 'makeGuess',
-	    value: function makeGuess(e) {
-	      e.preventDefault();
-	      this.props.setGuess(this.state.currentGuess);
-	      // clear input fields when click submit button
+	var HintMessage = function HintMessage(guess, randNum) {
+	    if (guess > randNum) {
+	        return 'Your guess is too high.';
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      console.log('currentGuess', this.state.currentGuess);
-	      console.log('guess', this.props.guess);
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'MakeGuess', onSubmit: this.makeGuess.bind(this) },
-	          React.createElement('input', {
-	            type: 'number',
-	            placeholder: 'Guess a number'
-	            // value={this.state.guess}
-	            , onChange: function onChange(e) {
-	              return _this2.setState({ currentGuess: e.target.value });
-	            }
-	          }),
-	          React.createElement('input', {
-	            type: 'submit', value: 'Submit Guess'
-	          })
-	        )
-	      );
+	    if (guess < randNum) {
+	        return 'Your guess is too low.';
 	    }
-	  }]);
+	    if (guess === randNum) {
+	        return 'You win!';
+	    }
+	};
 	
-	  return MakeGuess;
-	}(React.Component);
-	
-	exports.default = MakeGuess;
+	module.exports = HintMessage;
 
 /***/ },
 /* 472 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29720,35 +29582,48 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ResetButton = function (_Component) {
-	  _inherits(ResetButton, _Component);
+	var Buttons = function (_Component) {
+	  _inherits(Buttons, _Component);
 	
-	  function ResetButton() {
-	    _classCallCheck(this, ResetButton);
+	  function Buttons() {
+	    _classCallCheck(this, Buttons);
 	
-	    return _possibleConstructorReturn(this, (ResetButton.__proto__ || Object.getPrototypeOf(ResetButton)).call(this));
+	    return _possibleConstructorReturn(this, (Buttons.__proto__ || Object.getPrototypeOf(Buttons)).call(this));
 	  }
 	
-	  _createClass(ResetButton, [{
-	    key: 'render',
+	  _createClass(Buttons, [{
+	    key: "render",
 	    value: function render() {
 	      var _this2 = this;
 	
 	      return _react2.default.createElement(
-	        'button',
-	        {
-	          onClick: function onClick() {
-	            return _this2.props.onResetGame();
-	          } },
-	        'Reset'
+	        "div",
+	        { className: "Buttons" },
+	        _react2.default.createElement("input", { type: "submit", value: "Submit Guess" }),
+	        _react2.default.createElement(
+	          "button",
+	          {
+	            onClick: function onClick() {
+	              return _this2.props.onResetGame();
+	            } },
+	          "Clear"
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          {
+	            onClick: function onClick() {
+	              return _this2.props.onResetGame();
+	            } },
+	          "Reset"
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return ResetButton;
+	  return Buttons;
 	}(_react.Component);
 	
-	exports.default = ResetButton;
+	exports.default = Buttons;
 
 /***/ },
 /* 473 */
